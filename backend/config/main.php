@@ -8,16 +8,20 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'homeUrl' => '/office',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => require __DIR__ . '/modules.php',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+            'baseUrl' => '/office',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'anda\user\models\User',
+            'loginUrl' => ['/user/auth/login'],
+            // 'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
@@ -37,14 +41,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
