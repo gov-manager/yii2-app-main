@@ -48,5 +48,10 @@ return [
             ],
         ],
     ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => require(__DIR__.'/allowActions.php'
+        ),
+    ],
     'params' => $params,
 ];
